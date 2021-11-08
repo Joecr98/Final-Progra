@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+
+        <title>EDITAR USUARIO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/5dc02e1930.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    </head>
+    <body>
+        </br>
+        <div class="mx-auto" style="width: 1600px;">
+            <h1>REGISTRAR/EDITAR USUARIOS</h1>
+        </div>
+        <div class="mx-auto" style="width: 1600px;">
+            <a th:href="@{/misUsers}" class="btn btn-secondary" >Regresar</a>
+        </div>
+        </br>
+        <form th:action="@{/guardarUser}" method="post" th:object="${usuario}">
+
+            <div class="container mb-4">
+                <div class="container mb-4">
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="row g-3">
+                            <div class="col-md-4 mb-3">
+                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-portrait"></i></span>  
+                                <input type="hidden" name="ID_USUARIO" th:field="*{ID_USUARIO}"/>
+                                <div class="form-group">
+                                    <select name="ID_DEPTO" class="form-select" aria-label="Default select example">
+                                        <option selected th:text="${selectdepa}"></option>
+                                        <option th:each="depa : ${departamentos}" th:value="${depa.ID_DEPTO}" th:text="${depa.DESCRIPCION_DEPTO}"></option>
+                                    </select>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <select name="ID_PROFESION" class="form-select" aria-label="Default select example">
+                                        <option selected th:text="${selectprof}"></option>
+                                        <option th:each="profe : ${profesions}" th:value="${profe.ID_PROFESION}" th:text="${profe.DESCRIPCION_PROFESION}"></option>
+                                    </select>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <input name= "NOMBRE" th:field="*{NOMBRE}" class="form-control form-control-lg" type="text" placeholder="Nombres">
+
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <input name= "APELLIDO" th:field="*{APELLIDO}" class="form-control form-control-lg" type="text" placeholder="Apellidos">
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <input name= "CORREO_ELECTRONICO" th:field="*{CORREO_ELECTRONICO}" class="form-control form-control-lg" type="email" placeholder="Correo">
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <input name= "TELEFONO" th:field="*{TELEFONO}" class="form-control form-control-lg" type="text" placeholder="Telefono">
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label for="Fecha">Fecha</label>
+                                    <input name= "FECHA_NACIMIENTO" th:field="*{FECHA_NACIMIENTO}" class="form-control form-control-lg" type="date" placeholder="Fecha">
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <input name= "LATITUD" th:field="*{LATITUD}" class="form-control form-control-lg" type="text" placeholder="latitud">
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <input name= "LONGITUD" th:field="*{LONGITUD}" class="form-control form-control-lg" type="text" placeholder="longitud">
+                                </div>
+                                </br> 
+                            </div>
+
+
+                            <div class="container mb-4">
+                                <div class="col-12 ">
+                                    <input class="btn btn-success" type="submit" name="guardarUser" value="Registrar Usuario"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </body>
+</html>
